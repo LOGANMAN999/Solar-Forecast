@@ -1,0 +1,30 @@
+
+
+--- STAGE 1 FINAL ---
+
+Horizon                 : h=3
+Method                  : Raw LightGBM (no calibration wrapper)
+Operational threshold   : 0.65
+Training years          : 2018-2021
+Early-stop eval year    : 2022
+Test year               : 2024
+Best iteration          : 48
+Feature list            : C:\Users\Logan\Desktop\Python Programs\Data Science Weather Project\nextera_solar_forecast\models\h003\stage1_feature_list.json
+Model path              : C:\Users\Logan\Desktop\Python Programs\Data Science Weather Project\nextera_solar_forecast\models\h003\stage1_classifier.pkl
+
+2024 Holdout metrics @ threshold = 0.65:
+  AUC-ROC   : 0.8224
+  F1        : 0.6894
+  Precision : 0.8524
+  Recall    : 0.5787
+  Brier     : 0.1734
+
+  Confusion matrix:
+                      Pred: Cloudy  Pred: Clear
+  Actual: Cloudy             1,504          238
+  Actual: Clear              1,001        1,375
+
+  False clear-sky rate (FPR): 0.1366  (238 FP / 1742 actual cloudy)
+  False cloudy rate   (FNR): 0.4213  (1001 FN / 2376 actual clear)
+
+====================================================================

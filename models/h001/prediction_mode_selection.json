@@ -1,0 +1,21 @@
+{
+  "horizon": 1,
+  "selected_prediction_mode": "soft",
+  "selected_threshold": 0.35,
+  "validation_year": 2022,
+  "validation_metrics_by_mode": {
+    "hard_fixed": {
+      "val_rmse": 149.00390376028415,
+      "threshold": 0.65
+    },
+    "hard_tuned": {
+      "val_rmse": 137.82914992440112,
+      "threshold": 0.35
+    },
+    "soft": {
+      "val_rmse": 127.87748730076314,
+      "threshold": null
+    }
+  },
+  "clear_kt_strategy": "constant_1.0"
+}

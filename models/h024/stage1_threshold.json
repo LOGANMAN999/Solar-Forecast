@@ -1,0 +1,81 @@
+{
+  "horizon": 24,
+  "selected_threshold": 0.3,
+  "selection_metric": "all-daytime GHI RMSE",
+  "validation_year": 2022,
+  "fixed_threshold": 0.65,
+  "candidate_thresholds": [
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85
+  ],
+  "validation_metrics_by_threshold": [
+    {
+      "threshold": 0.2,
+      "val_rmse": 192.6355712522011
+    },
+    {
+      "threshold": 0.25,
+      "val_rmse": 189.27070770451888
+    },
+    {
+      "threshold": 0.3,
+      "val_rmse": 187.78507207496634
+    },
+    {
+      "threshold": 0.35,
+      "val_rmse": 188.82354415983593
+    },
+    {
+      "threshold": 0.4,
+      "val_rmse": 190.25373573465106
+    },
+    {
+      "threshold": 0.45,
+      "val_rmse": 193.63248660143353
+    },
+    {
+      "threshold": 0.5,
+      "val_rmse": 197.31751759107422
+    },
+    {
+      "threshold": 0.55,
+      "val_rmse": 204.8407773158995
+    },
+    {
+      "threshold": 0.6,
+      "val_rmse": 211.1171990868379
+    },
+    {
+      "threshold": 0.65,
+      "val_rmse": 219.23442088272108
+    },
+    {
+      "threshold": 0.7,
+      "val_rmse": 227.7794205874442
+    },
+    {
+      "threshold": 0.75,
+      "val_rmse": 236.980701144073
+    },
+    {
+      "threshold": 0.8,
+      "val_rmse": 244.42622789001504
+    },
+    {
+      "threshold": 0.85,
+      "val_rmse": 246.48495279091466
+    }
+  ]
+}

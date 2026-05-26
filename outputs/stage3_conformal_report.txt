@@ -1,0 +1,127 @@
+====================================================================
+Stage 3 / Stage 3b Report -- Conformal Prediction Intervals
+Babcock Ranch Solar Energy Center  |  2024 Holdout
+====================================================================
+
+--- WARM-UP WINDOW STATISTICS (2023 NONCONFORMITY SCORES) ---
+
+  Combined (all 2023 daytime hours):
+    n = 4,106  mean = 1.52 W/m2  median = 0.00  90th pctile = 5.06
+
+  Stream C (Stage 1 predicted clear, prob >= 0.65):
+    n = 2,475  (60.3% of daytime)
+    mean = 0.09 W/m2  median = 0.00  90th pctile = 0.00
+    Window initialized with last 200 entries
+
+  Stream K (Stage 1 predicted cloudy, prob < 0.65):
+    n = 1,631  (39.7% of daytime)
+    mean = 3.69 W/m2  median = 2.35  90th pctile = 8.49
+    Window initialized with last 200 entries
+
+--- SINGLE-WINDOW RESULTS (Stage 3 original, gamma=0.005) ---
+
+  Method                           Coverage   Mean Width
+  ------------------------------------------------------
+  Adaptive conformal (Stage 3)       0.8980         22.3
+  Static conformal                   0.8045         10.1
+  Naive Gaussian (1.96 sigma)        0.8560         14.8
+
+  Cloud regime coverage (single-window, true label):
+  Regime               Coverage   Mean Width        n
+  -------------------------------------------------
+  Clear-sky (true)       0.9962         20.0    2,376 *** ABOVE 0.97
+  Cloudy (true)          0.7641         25.3    1,742 *** BELOW 0.85
+
+  Winkler: Adaptive=39.92  Static=44.69  Gaussian=41.36
+
+--- STRATIFIED ADAPTIVE RESULTS (Stage 3b) ---
+
+  a) Overall and per-stream marginal coverage:
+  Segment                        Coverage   Mean Width        n
+  -----------------------------------------------------------
+  Overall (all daytime)            0.9556         16.0    4,118
+  Stream C (predicted clear)       0.9950          0.0    2,382 *** ABOVE 0.97
+  Stream K (predicted cloudy)      0.9015         37.9    1,736
+  Mismatch hours (Stage1 wrong)     0.5455         16.3       44  (rate=0.011)
+
+  b) Cloud regime (true label):
+  Regime               Coverage   Mean Width        n
+  -------------------------------------------------
+  Clear-sky (true)       0.9966          0.3    2,376 *** ABOVE 0.97
+  Cloudy (true)          0.8995         37.3    1,742
+
+  c) Cloud type:
+  Type                     Coverage   Mean Width        n
+  -----------------------------------------------------
+  Type 0 (Clear)             0.9962          0.3    2,115 *** ABOVE 0.97
+  Type 1 (Prob Clear)        1.0000          0.1      261 *** ABOVE 0.97
+  Type 2 (Fog)               0.9390         36.6      164
+  Type 3 (Water)             0.9297         37.9      370
+  Type 4 (SC Water)          0.9333         37.7       15
+  Type 5 (Mixed)             0.8621         41.3       29
+  Type 6 (Opaque Ice)        0.8679         37.1      265
+  Type 7 (Cirrus)            0.8954         37.1      650
+  Type 8 (Overlapping)       0.8744         37.3      199
+  Type 9 (Overshooting)      0.8800         37.3       50
+
+  d) Month:
+  Month      Coverage   Mean Width        n
+  ----------------------------------------
+  Jan          0.8942         21.8      293
+  Feb          0.9773         15.6      308 *** ABOVE 0.97
+  Mar          0.9677         21.6      341
+  Apr          0.9717          8.3      353 *** ABOVE 0.97
+  May          0.9726          7.7      402 *** ABOVE 0.97
+  Jun          0.9385         22.2      390
+  Jul          0.9603         20.8      403
+  Aug          0.9169         18.8      385
+  Sep          0.9667         22.3      330
+  Oct          0.9568         17.2      324
+  Nov          0.9700          7.5      300
+  Dec          0.9758          6.0      289 *** ABOVE 0.97
+
+  e) Hour of day:
+   Hour   Coverage   Mean Width        n
+  --------------------------------------
+     11     1.0000          9.9      136 *** ABOVE 0.97
+     12     0.9934         10.6      303 *** ABOVE 0.97
+     13     0.9836         12.3      366 *** ABOVE 0.97
+     14     0.9590         12.3      366
+     15     0.9126         12.3      366
+     16     0.9344         15.6      366
+     17     0.9262         16.7      366
+     18     0.9372         18.4      366
+     19     0.9344         19.0      366
+
+  f) Ramp events:
+  Ramp events     coverage=0.9526  mean_width=14.9 W/m2  n=2,513
+  Non-ramp        coverage=0.9601  mean_width=17.7 W/m2  n=1,605
+
+  g) Stream mismatch analysis:
+    Total mismatch hours     : 44 (1.1% of daytime)
+    Pred cloudy / true clear : 19
+    Pred clear  / true cloudy: 25
+    Coverage (pred cloudy, true clear)  : 0.5789  mean_width=37.8 W/m2
+    Coverage (pred clear,  true cloudy) : 0.5200  mean_width=0.0 W/m2
+
+--- WINKLER SCORES ---
+
+  Method                               Winkler Score
+  --------------------------------------------------
+  Stratified adaptive (Stage 3b)               25.69
+  Single-window adaptive (Stage 3)             39.92
+  Static conformal                             44.69
+  Naive Gaussian (1.96 sigma)                  41.36
+
+--- HEAD-TO-HEAD COMPARISON ---
+
+  Metric                             Strat Adap   Single Adap    Static    Gaussian
+  ------------------------------------------------------------------------------
+  Marginal coverage                      0.9556        0.8980    0.8045      0.8560
+  Cloudy coverage (true label)           0.8995        0.7641    0.5448      0.6653
+  Ramp coverage                          0.9526        0.8993    0.8094      0.8619
+  Monthly std(coverage)                  0.0250        0.0209    0.0786      0.0578
+  Winkler score                           25.69         39.92     44.69       41.36
+  Mean interval width (W/m2)               16.0          22.3      10.1        14.8
+
+====================================================================

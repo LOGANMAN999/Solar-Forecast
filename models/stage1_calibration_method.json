@@ -1,0 +1,7 @@
+{
+  "method": "raw",
+  "equal_mass_ECE": 0.001531,
+  "brier_score": 0.007833,
+  "operational_threshold": 0.65,
+  "selection_reason": "Raw LightGBM outperforms all calibration methods on ECE and Brier. Bimodal distribution with 98.4% of predictions at extremes leaves nothing meaningful to calibrate."
+}

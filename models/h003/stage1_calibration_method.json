@@ -1,0 +1,12 @@
+{
+  "method": "raw",
+  "horizon": 3,
+  "train_years": "2018-2021",
+  "early_stop_year": 2022,
+  "holdout_year": 2024,
+  "best_iteration": 48,
+  "operational_threshold": 0.65,
+  "auc": 0.822354,
+  "f1": 0.689396,
+  "brier": 0.173402
+}

@@ -1,0 +1,20 @@
+[
+  "kt_lag1",
+  "kt_lag2",
+  "kt_lag3",
+  "kt_lag24",
+  "kt_lag48",
+  "kt_roll3_mean",
+  "kt_roll3_std",
+  "kt_roll6_mean",
+  "kt_roll6_std",
+  "hour_of_day",
+  "month",
+  "day_of_year",
+  "air_temperature_lag1",
+  "wind_speed_lag1",
+  "relative_humidity_lag1",
+  "is_clear_sky_lag1",
+  "is_clear_sky_lag2",
+  "is_clear_sky_lag3"
+]

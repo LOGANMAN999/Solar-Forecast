@@ -1,0 +1,95 @@
+====================================================================
+Stage 2 Full Report -- Babcock Ranch Solar Energy Center  h=1
+====================================================================
+
+  horizon             : h=1
+  train years         : 2018-2021
+  early-stop year     : 2022
+  test year           : 2024
+  selected_mode       : soft
+  threshold_used      : 0.35 (routing only)
+  clear_kt_strategy   : constant_1.0
+
+--- STAGE 2 CV RESULTS ---
+
+  Fold  Train               Val  Best iter     RMSE      MAE       R2
+  ----- ---------------- ------ ----------  -------  -------  -------
+  1     2018-2018          2019         80   0.2204   0.1768   0.2738
+  2     2018-2019          2020        122   0.2132   0.1727   0.3035
+  3     2018-2020          2021        190   0.2451   0.2006   0.2642
+  4     2018-2021          2022        201   0.2434   0.1980   0.2992
+  RMSE mean +/- std: 0.2306 +/- 0.0140
+  MAE mean +/- std: 0.1870 +/- 0.0124
+  R2 mean +/- std: 0.2852 +/- 0.0166
+
+--- STAGE 2 HOLDOUT RESULTS ---
+
+  Model                        RMSE      MAE       R2
+  ------------------------  -------  -------  -------
+  Stage 2 model              0.2301   0.1878   0.3311
+  Persistence                0.3041   0.2269  -0.1686
+  Climatological mean        0.2798   0.2400   0.0106
+
+  RMSE by cloud type:
+    cloud_type  2 (Fog           )  RMSE=0.1846  n=164
+    cloud_type  3 (Water         )  RMSE=0.2040  n=370
+    cloud_type  4 (SC Water      )  RMSE=0.2671  n=15
+    cloud_type  5 (Mixed         )  RMSE=0.2522  n=29
+    cloud_type  6 (Opaque Ice    )  RMSE=0.2718  n=265
+    cloud_type  7 (Cirrus        )  RMSE=0.2230  n=650
+    cloud_type  8 (Overlapping   )  RMSE=0.2567  n=199
+    cloud_type  9 (Overshooting  )  RMSE=0.2584  n=50
+
+--- STAGE 1 THRESHOLD TUNING ---
+
+  validation_year  : 2022
+  selection_metric : all-daytime GHI RMSE
+  fixed_threshold  : 0.65
+  selected_threshold : 0.35
+
+   Threshold    Val_RMSE
+  ----------  ----------
+        0.20      143.93
+        0.25      141.31
+        0.30      140.48
+        0.35      137.83 *
+        0.40      138.18
+        0.45      138.61
+        0.50      140.63
+        0.55      142.93
+        0.60      145.62
+        0.65      149.00 (fixed)
+        0.70      151.72
+        0.75      157.37
+        0.80      165.33
+        0.85      180.07
+
+--- PREDICTION MODE COMPARISON ---
+
+  validation_year : 2022
+
+  mode             threshold    val_rmse
+  --------------  ----------  ----------
+  hard_fixed            0.65      149.00
+  hard_tuned            0.35      137.83
+  soft                   N/A      127.88 *selected*
+
+  2024 holdout -- all modes:
+
+  mode             threshold   all_rmse  clear_rmse  cloudy_rmse  ramp_rmse   all_skill
+  -------------------------------------------------------------------------------------
+  hard_fixed            0.65     142.03      139.48       145.44     148.54     +0.3044
+  hard_tuned            0.35     125.49       79.99       168.81     146.63     +0.3854
+  soft                   N/A     116.00       92.29       142.09     130.10     +0.4319 *selected*
+  yesterday              N/A     204.18      166.25       246.64     200.97         ---
+
+--- YESTERDAY'S WEATHER COMPARISON ---
+
+  Segment          RMSE_mod   MAE_mod   MBE_mod   RMSE_yest   SkillScore
+  --------------  ---------  --------  --------  ----------  -----------
+  All daytime        116.00     79.32    -17.53      204.18      +0.4319
+  Clear-sky           92.29     62.49    -62.49      166.25      +0.4449
+  Cloudy             142.09    102.28    +43.79      246.64      +0.4239
+  Ramp events        130.10     85.88    -13.35      200.97      +0.3526
+
+====================================================================

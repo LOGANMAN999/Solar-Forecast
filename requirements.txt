@@ -1,0 +1,32 @@
+# nextera_solar_forecast — Python dependencies
+# Tested with Anaconda Python 3.9 (pandas 2.0.3 + numpy 1.23.5 compatibility required)
+# Install via:  pip install -r requirements.txt
+
+# --- data / numerics ---
+numpy>=1.23.0           # tested: 1.23.5  (pandas 2.0 requires ~1.23)
+pandas>=2.0.0           # tested: 2.0.3   (parquet, DatetimeTZDtype)
+pyarrow>=12.0.0         # tested: 15.0.0  (parquet read/write backend for pandas)
+
+# --- HTTP / data ingestion ---
+requests>=2.31.0        # tested: 2.31.0  (fetch_nsrdb.py NSRDB API)
+
+# --- clear-sky model ---
+pvlib>=0.10.0           # tested: 0.13.0  (clearsky.py Ineichen model)
+
+# --- modelling ---
+lightgbm>=4.0.0         # tested: 4.6.0   (LGBMClassifier, LGBMRegressor,
+                        #                   early_stopping/log_evaluation callbacks)
+scikit-learn>=1.0.0     # tested: 1.0.2   (stage1_finalize.py: brier_score_loss,
+                        #                   roc_auc_score, confusion_matrix, f1_score,
+                        #                   precision_score, recall_score;
+                        #                   stage2_regressor.py: mean_squared_error,
+                        #                   mean_absolute_error, r2_score)
+                        # NOTE: stage1_classifier.py uses sklearn.frozen.FrozenEstimator
+                        #   which requires scikit-learn>=1.6.0. The active pipeline step
+                        #   is stage1_finalize.py (no FrozenEstimator). If you intend to
+                        #   run stage1_classifier.py, upgrade scikit-learn to >=1.6.0.
+joblib>=1.2.0           # tested: 1.2.0   (model serialisation: joblib.dump / joblib.load)
+
+# --- plotting ---
+matplotlib>=3.6.0       # tested: 3.6.2   (all src/*.py plots; LinearSegmentedColormap,
+                        #                   GridSpec, Agg backend)
