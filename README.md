@@ -1,4 +1,4 @@
-# Leakage-Safe Multi-Horizon Solar Irradiance Forecasting with LightGBM and Conformal Prediction
+# Multi-Horizon Solar Irradiance Forecasting with LightGBM and Conformal Prediction
 
 **Site:** Babcock Ranch Solar Energy Center — lat 26.78, lon −81.53 (Charlotte County, FL)  
 **Data:** NSRDB GOES Conus PSM v4 · hourly · 2018–2024  
