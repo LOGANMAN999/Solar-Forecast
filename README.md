@@ -50,8 +50,10 @@ $$
 For a target miscoverage level $\alpha$, such as $\alpha = 0.10$ for a 90% prediction interval, choose a conformal radius from the calibration scores:
 
 $$
-q_{1-\alpha} = \operatorname{Quantile}_{1-\alpha}\left(\{s_i\}_{i=1}^{n}\right).
+q_{1-\alpha} = Q_{1-\alpha}\left(\{s_i\}_{i=1}^{n}\right).
 $$
+
+Here, $Q_{1-\alpha}$ denotes the empirical $(1-\alpha)$-quantile of the calibration nonconformity scores.
 
 The resulting prediction interval for a new forecast $\hat{y}_{t}$ is
 
