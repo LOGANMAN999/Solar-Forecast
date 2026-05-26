@@ -37,6 +37,34 @@ Target coverage: 0.90. Stratified adaptive equals or improves Winkler score vs s
 
 ---
 
+## Conformal Prediction
+
+Point forecasts give a single estimate, but solar irradiance has strongly time-varying uncertainty because cloud cover, ramps, and clear-sky periods have very different error behavior. To quantify forecast uncertainty, this project uses conformal prediction to convert point forecasts into prediction intervals.
+
+Given calibration observations $y_i$ and point forecasts $\hat{y}_i$, define the absolute residual or nonconformity score
+
+$$
+s_i = |y_i - \hat{y}_i|.
+$$
+
+For a target miscoverage level $\alpha$, such as $\alpha = 0.10$ for a 90% prediction interval, choose a conformal radius from the calibration scores:
+
+$$
+q_{1-\alpha} = \operatorname{Quantile}_{1-\alpha}\left(\{s_i\}_{i=1}^{n}\right).
+$$
+
+The resulting prediction interval for a new forecast $\hat{y}_{t}$ is
+
+$$
+\left[\hat{y}_{t} - q_{1-\alpha},\ \hat{y}_{t} + q_{1-\alpha}\right].
+$$
+
+In this project, the target variable for the final interval is GHI, so $y_t = GHI_t$ and $\hat{y}_t = \widehat{GHI}_t$. The conformal calibration year is kept separate from the model training years, so interval widths are estimated from out-of-sample residuals rather than training errors.
+
+The final pipeline also uses regime-stratified adaptive conformal intervals. Instead of using one residual distribution for all solar conditions, the method keeps separate residual streams for predicted clear and predicted cloudy regimes. This allows intervals to remain narrower during stable clear-sky periods while widening during cloudier, higher-uncertainty periods.
+
+---
+
 ## Horizon Degradation
 
 ![Forecast horizon degradation](notebooks/horizon_degradation_curve.png)
