@@ -1,8 +1,8 @@
 # Multi-Horizon Solar Irradiance Forecasting with LightGBM and Conformal Prediction
 
-This project forecasts solar irradiance (1–24 hour horizons) for a real utility-scale solar site using a two-stage LightGBM model, then wraps each point forecast in a calibrated uncertainty interval via regime-stratified adaptive conformal prediction — giving both what the output will likely be and how confident that estimate is, which matters directly for dispatch, storage scheduling, and day-ahead planning decisions.
+This project forecasts solar irradiance (1–24 hour horizons) for a real utility-scale solar site using a two-stage LightGBM model, then wraps each point forecast in a calibrated uncertainty interval via regime-stratified adaptive conformal prediction, giving both what the output will likely be and how confident that estimate is, which matters directly for dispatch, storage scheduling, and day-ahead planning decisions.
 
-**Site:** Babcock Ranch Solar Energy Center — lat 26.78, lon −81.53 (Charlotte County, FL)  
+**Site:** Babcock Ranch Solar Energy Center: lat 26.78, lon −81.53 (Charlotte County, FL)  
 **Data:** NSRDB GOES Conus PSM v4 · hourly · 2018–2024  
 **Target:** Clearness index kt → GHI (W/m²)  
 **Horizons:** h = 1, 3, 6, 24 hours  
