@@ -38,13 +38,15 @@ Skill = 1 − RMSE_model / RMSE_yesterday.
 | 24 | **0.2757** | 0.2382 | 0.0396 | 0.2798 | 0.2400 | 0.0106 | **+0.015** |
 
 Metric: clearness index kt (dimensionless), evaluated on the 2024 **cloudy** holdout only
-(cloud_type > 1) — the climatological baseline is defined for cloudy hours.
+(cloud_type > 1), the climatological baseline is defined for cloudy hours.
 Climatology = mean kt per (month, hour-of-day) from 2018–2021 cloudy training hours; it is
 **horizon-invariant by construction** (identical every h), so the model's edge shrinks from
 +0.178 at h=1 to near-parity (+0.015) at h=24 as recent-kt persistence goes stale without NWP.
 Skill vs Climatology = 1 − RMSE_model / RMSE_climatology.
-For reference, lag-h persistence on the same holdout is 0.3041 / 0.3751 / 0.4777 / 0.4218 kt —
-worse than climatology from h=3 onward.
+For reference, lag-h persistence on the same holdout is 0.3041 / 0.3751 / 0.4777 / 0.4218 kt,
+worse than climatology at all four horizons (already 0.3041 vs 0.2798 at h=1), and 
+non-monotonic: the 6 h lag (0.4777) is worse than the 24 h lag (0.4218) because 24 h
+persistence compares the same solar hour and respects the diurnal cloud cycle.
 
 ---
 
