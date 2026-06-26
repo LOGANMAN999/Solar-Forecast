@@ -434,16 +434,6 @@ Outputs:
 
 ---
 
-## Future Work
-
-- Add HRRR/GFS forecast variables (wind, temperature, cloud fraction) as features for h = 6 and h = 24
-- Incorporate nearby spatial NSRDB grid points as additional predictors
-- Convert GHI forecasts to AC power using pvlib PVSystem model
-- Benchmark a single-stage LightGBM quantile regression model against the two-stage approach
-- Improve conformal stratification for misrouted and ramp hours (third stream or online re-routing)
-- Extend to sub-hourly resolution using NSRDB 5-minute PSM product
-
----
 
 ## Data Source
 
