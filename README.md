@@ -26,6 +26,29 @@ This project forecasts solar irradiance (1–24 hour horizons) for a real utilit
 Yesterday's weather baseline: 204.2 W/m² all-daytime, 166.3 W/m² clear-sky, 246.6 W/m² cloudy.  
 Skill = 1 − RMSE_model / RMSE_yesterday.
 
+---
+
+### kt Forecast vs Climatology — 2024 Cloudy Holdout (Stage 2 Regressor)
+
+| h | Stage 2 kt RMSE | Stage 2 MAE | Stage 2 R² | Climatology kt RMSE | Climatology MAE | Climatology R² | Skill vs Climatology |
+|--:|----------------:|------------:|-----------:|--------------------:|----------------:|---------------:|---------------------:|
+|  1 | **0.2301** | 0.1878 | 0.3311 | 0.2798 | 0.2400 | 0.0106 | **+0.178** |
+|  3 | **0.2562** | 0.2182 | 0.1708 | 0.2798 | 0.2400 | 0.0106 | **+0.084** |
+|  6 | **0.2692** | 0.2315 | 0.0843 | 0.2798 | 0.2400 | 0.0106 | **+0.038** |
+| 24 | **0.2757** | 0.2382 | 0.0396 | 0.2798 | 0.2400 | 0.0106 | **+0.015** |
+
+Metric: clearness index kt (dimensionless), evaluated on the 2024 **cloudy** holdout only
+(cloud_type > 1) — the climatological baseline is defined for cloudy hours.
+Climatology = mean kt per (month, hour-of-day) from 2018–2021 cloudy training hours; it is
+**horizon-invariant by construction** (identical every h), so the model's edge shrinks from
++0.178 at h=1 to near-parity (+0.015) at h=24 as recent-kt persistence goes stale without NWP.
+Skill vs Climatology = 1 − RMSE_model / RMSE_climatology.
+For reference, lag-h persistence on the same holdout is 0.3041 / 0.3751 / 0.4777 / 0.4218 kt —
+worse than climatology from h=3 onward.
+
+---
+
+
 ### Conformal Intervals — 2024 Holdout (Regime-Stratified Adaptive, α = 0.10)
 
 | h | Coverage | Mean Width (W/m²) | Winkler Score | Single-Window Cov. | Static Cov. |
